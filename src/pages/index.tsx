@@ -1,4 +1,9 @@
 import { GetStaticProps } from 'next';
+import Head from 'next/head';
+import { format } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
+import { FiUser, FiCalendar } from 'react-icons/fi';
+
 import Header from '../components/Header';
 
 import { getPrismicClient } from '../services/prismic';
@@ -25,11 +30,48 @@ interface HomeProps {
   postsPagination: PostPagination;
 }
 
+const posts = [
+  {
+    title: 'Como utilizar hooks',
+    subtitle: 'Pensando em sincronização em vez de ciclos de vida.',
+    date: new Date(),
+    author: 'Petrus Pierre',
+  },
+  {
+    title: 'Como utilizar hooks 2',
+    subtitle: 'Pensando em sincronização em vez de ciclos de vida.',
+    date: new Date(),
+    author: 'Petrus Bento',
+  },
+];
+
 export default function Home() {
   return (
-    <div>
-      <h1>Post</h1>
-    </div>
+    <>
+      <Head>
+        <title>spacetraveling</title>
+      </Head>
+      <div className={styles.container}>
+        <ul className={styles.postList}>
+          {posts.map(post => (
+            <li key={post.title}>
+              <h2>{post.title}</h2>
+              <p>{post.subtitle}</p>
+              <div>
+                <div>
+                  <FiCalendar size="1.5rem" />
+                  <p>{format(post.date, 'dd MMM yyyy', { locale: ptBR })}</p>
+                </div>
+                <div>
+                  <FiUser size="1.5rem" />
+                  <p>{post.author}</p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
 

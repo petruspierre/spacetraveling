@@ -1,1 +1,41 @@
-// TODO
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.postList {
+  text-decoration: none;
+  list-style: none;
+
+  li {
+    h2 {
+      font-size: 1.75rem;
+      margin-bottom: 0.25rem;
+    }
+
+    > p {
+      font-size: 1.125rem;
+      margin-bottom: 1rem;
+    }
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      div {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
+
+    & + li {
+      margin-top: 3rem;
+    }
+  }
+}

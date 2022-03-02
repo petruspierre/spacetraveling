@@ -33,12 +33,17 @@ body, input, textarea, select, button {
   font: 400 1rem "Inter", sans-serif;
 }
 
-p, span, svg {
+p, span, svg, time {
   color: var(--info);
 }
 
 button {
   cursor: pointer;
+  border: 0;
+  background: transparent;
+  color: var(--highlight);
+  font-weight: bold;
+  width: fit-content;
 }
 
 a {
